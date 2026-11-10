@@ -1,3 +1,21 @@
+from decimal import Decimal
+import os
+import random
+
+import mysql.connector as mc
+
+
+def connect_db():
+    password = os.environ.get("THINKIT_DB_PASSWORD")
+    if not password:
+        raise SystemExit("Set THINKIT_DB_PASSWORD before running ThinkIt. See README.md.")
+
+    return mc.connect(
+        host="localhost",
+        user=os.environ.get("THINKIT_DB_USER", "thinkit_app"),
+        password=password,
+        database=os.environ.get("THINKIT_DB_NAME", "thinkit_demo"),
+    )
 
 
 def Menu():
@@ -35,9 +53,8 @@ def Menu():
             sc=input("Select a category: ")
             if sc.lower()=='a':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from a")
                 rec= cur.fetchall()
@@ -89,9 +106,8 @@ def Menu():
 
             elif sc.lower()=='b':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from b")
                 rec= cur.fetchall()
@@ -142,9 +158,8 @@ def Menu():
                 
             elif sc.lower()=='c':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from c")
                 rec= cur.fetchall()
@@ -195,9 +210,8 @@ def Menu():
                 
             elif sc.lower()=='d':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from d")
                 rec= cur.fetchall()
@@ -248,9 +262,8 @@ def Menu():
 
             elif sc.lower()=='e':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from e")
                 rec= cur.fetchall()
@@ -301,9 +314,8 @@ def Menu():
                 
             elif sc.lower()=='f':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from f")
                 rec= cur.fetchall()
@@ -354,9 +366,8 @@ def Menu():
                 
             elif sc.lower()=='g':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from g")
                 rec= cur.fetchall()
@@ -407,9 +418,8 @@ def Menu():
                 
             elif sc.lower()=='h':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from h")
                 rec= cur.fetchall()
@@ -461,9 +471,8 @@ def Menu():
 
             elif sc.lower()=='i':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from i")
                 rec= cur.fetchall()
@@ -515,9 +524,8 @@ def Menu():
 
             elif sc.lower()=='j':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from j")
                 rec= cur.fetchall()
@@ -568,9 +576,8 @@ def Menu():
                 
             elif sc.lower()=='x':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from x")
                 rec= cur.fetchall()
@@ -621,9 +628,8 @@ def Menu():
                 
             elif sc.lower()=='y':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from y")
                 rec= cur.fetchall()
@@ -674,9 +680,8 @@ def Menu():
                 
             elif sc.lower()=='z':
                 print()
-                import mysql.connector as mc
         
-                mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')   
+                mydb = connect_db()
                 cur = mydb.cursor()
                 cur.execute("select * from z")
                 rec= cur.fetchall()
@@ -728,8 +733,7 @@ def Menu():
 
         elif w==2:
             print()
-            import mysql.connector as mc
-            mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')
+            mydb = connect_db()
             cur = mydb.cursor()
 
             query = ('select * from cart')
@@ -793,8 +797,7 @@ def Menu():
  
         elif w==3:
             print()
-            import mysql.connector as mc
-            mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')
+            mydb = connect_db()
             cur = mydb.cursor()
 
             query = ('select * from cart')
@@ -857,7 +860,7 @@ def Menu():
                 print()
                 print("YOUR CART")
                 print()
-                total = 0
+                total = Decimal("0.00")
                 
                 cur.execute("select * from cart")
                 rec=cur.fetchall()
@@ -877,18 +880,18 @@ def Menu():
 
                 elif total>=500 and total<1000:
                     print("You have recieved 5% discount")
-                    total = (95/100)*total
+                    total *= Decimal("0.95")
                     print()
                             
 
                 elif total>=1000:
                     print("You have recieved 10% discount")
-                    total = (90/100)*total
+                    total *= Decimal("0.90")
                     print()
                        
 
                 print()
-                print("Final price: ",total)
+                print(f"Final price: {total:.2f}")
                 
                 Delivery_boys = ['Tanishq Pradhan', 'Vishesh Gupta', 'Nikhil Sharma', 'Divit Vohra', 'Ishaan Karwaal', 'Hardik Gaba', 'Navdeep Singh', 'Atharv Sharma', 'Vedant Seth', 'Mahesh Talle']
                 n = True
@@ -909,9 +912,7 @@ def Menu():
 
         
 
-import random
-import mysql.connector as mc
-mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'ThinkIt')
+mydb = connect_db()
 cur = mydb.cursor()
 cur.execute("truncate table cart;")
 cur.execute("truncate table login;")
@@ -931,7 +932,7 @@ while True:
 
     x = int(input('Select what you want to do: '))
     if x == 1:
-        mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'thinkit')
+        mydb = connect_db()
         cur = mydb.cursor()
         phone = int(input('Enter your phone number: '))
         name = input('Enter your name: ')
@@ -957,7 +958,7 @@ while True:
 
 
     elif x == 2:
-        mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'thinkit')
+        mydb = connect_db()
         cur = mydb.cursor()
         phone = int(input('Enter your phone number: '))
         passwd = input('Enter your password: ')
@@ -1011,7 +1012,7 @@ while True:
             Menu()
 
     elif x == 3:
-        mydb = mc.connect(host = 'localhost', user = 'root', passwd = 'mohith2005', database = 'thinkit')
+        mydb = connect_db()
         cur = mydb.cursor()
         phone = int(input('Enter your phone number: '))
         passwd = input('Enter your password: ')
